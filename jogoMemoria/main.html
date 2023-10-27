@@ -6,27 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Memoria</title>
     <script>
-        function misturarCartas(array = ["./cartas/2_espadas.png", "./cartas/3_copas.png", "./cartas/3_espadas.png", "./cartas/4_espadas.png", "./cartas/6_espadas.png", "./cartas/8_paus.png", "./cartas/9_ouro.png", "./cartas/10_espadas.png", "./cartas/10_ouro.png", "./cartas/a_copas.png", "./cartas/a_espadas.png", "./cartas/a_ouro.png"]) {
-        const newArray = [];
-        let number = Math.floor(Math.random() * array.length);
-        let count = 1;
-        newArray.push(array[number]);
+        function misturarCartas() {
+            var cartas = ["./cartas/2_espadas.png", "./cartas/3_copas.png", "./cartas/3_espadas.png", "./cartas/4_espadas.png", "./cartas/6_espadas.png", "./cartas/8_paus.png", "./cartas/9_ouro.png", "./cartas/10_espadas.png", "./cartas/10_ouro.png", "./cartas/a_copas.png", "./cartas/a_espadas.png", "./cartas/a_ouro.png", "./cartas/2_espadas.png", "./cartas/3_copas.png", "./cartas/3_espadas.png", "./cartas/4_espadas.png", "./cartas/6_espadas.png", "./cartas/8_paus.png", "./cartas/9_ouro.png", "./cartas/10_espadas.png", "./cartas/10_ouro.png", "./cartas/a_copas.png", "./cartas/a_espadas.png", "./cartas/a_ouro.png"]
+            var m = cartas.length, t, i;
 
-        while (count < array.length) {
-            const newNumber = Math.floor(Math.random() * array.length);
-            if (!newArray.includes(array[newNumber])) {
-                count++;
-                number = newNumber;
-                newArray.push(array[number]);
-            }
-        }
+            while (m) {
 
-        return newArray;
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+                // And swap it with the current element.
+                t = cartas[m];
+                cartas[m] = cartas[i];
+                cartas[i] = t;
+                console.log(cartas[i]);
+            }           
+            return cartas;
         }
+        
+
     </script>
 </head>
 <body>
     <h1>Jogo da Memoria</h1>
-    <button>Novo Jogo</button>
+    <button onclick="novoJogo()">Novo Jogo</button>
+    <div id="quadro">
+        <table id="tabela">
+            <tr>
+                <th><img src="./cartas/10_espadas.png" alt="" width="180" height="250"></th>
+                <th><img src="./cartas/10_ouro.png" alt="" width="180" height="250"></th>
+                <th><img src="./cartas/2_espadas.png" alt="" width="180" height="250"></th>
+                <th><img src="./cartas/3_copas.png" alt="" width="180" height="250"></th>
+                <th><img src="./cartas/3_espadas.png" alt="" width="180" height="250"></th>
+                <th><img src="./cartas/4_espadas.png" alt="" width="180" height="250"></th>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
